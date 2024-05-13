@@ -18,10 +18,10 @@ public class MicroservicesGatewayApplication {
         return builder.routes()
                 .route(p -> p
                         .path("/customers/**")
-                        .uri("http://localhost:8081"))
+						.uri("lb://CUSTOMER-MICROSERVICE")) // Load balancing for CUSTOMER-MICROSERVICE => name from eureka server
                 .route(p -> p
                         .path("/loans/**")
-                        .uri("http://localhost:8082"))
+						.uri("lb://LOAN-MICROSERVICE")) // Load balancing for Load balancing for LOAN-MICROSERVICE => name from eureka server
                 .build();
     }
 
